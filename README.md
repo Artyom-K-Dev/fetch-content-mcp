@@ -1,58 +1,38 @@
-# Fetch URL MCP Server
+# Fetch Content MCP Server
 
-A Model Context Protocol (MCP) server written in Rust that allows AI agents to fetch URL content and convert it to Markdown.
+A Model Context Protocol (MCP) server that fetches URL content and converts it to Markdown.
 
 ## Features
 
-*   **URL Fetching**: Retrieves content from a given URL.
-*   **HTML to Markdown**: Automatically converts HTML content to Markdown for easier consumption by LLMs.
-
-## Installation & Configuration
-
-### Prerequisites
-*   Rust toolchain installed.
-
-### Build
-```bash
-cargo build --release
-```
-
-### Configuration (Cursor)
-Add the server to your `.cursor/mcp.json` (project specific) or your global MCP settings.
-
-**Copy-pasteable entry:**
-
-```json
-{
-  "mcpServers": {
-    "fetch-url-mcp": {
-      "command": "/workspaces/MachineLearning/FetchUrlMCP/target/release/fetch_url_mcp",
-      "args": []
-    }
-  }
-}
-```
+- **Fetch & Convert**: Downloads HTML content from a URL and converts it to readable Markdown
+- **Clean Output**: Strips unnecessary HTML tags and formatting
 
 ## Usage
 
-The server exposes a single tool: `fetch`.
+### Docker (Recommended)
 
-### Tool: `fetch`
+```bash
+docker run -i --rm ghcr.io/artyom-k-dev/fetch-content-mcp:latest
+```
 
-**Arguments:**
-*   `url`: String. The URL to fetch.
+### Local Development
 
-**Example:**
-*   URL: `https://example.com`
-*   Input: `{"url": "https://example.com"}`
+1. Install dependencies:
+   ```bash
+   cargo build --release
+   ```
 
-## Development
+2. Run the server:
+   ```bash
+   cargo run --release
+   ```
 
-1.  **Run locally**:
-    ```bash
-    cargo run
-    ```
+## Tools Available
 
-## License
+- `fetch`: Fetch a URL and convert its content to Markdown.
+  - Arguments:
+    - `url`: The URL to fetch
 
-MIT
+## Configuration
+
+No environment variables are required for this server.
