@@ -11,6 +11,26 @@ A Model Context Protocol (MCP) server that fetches URL content and converts it t
 
 ### Docker (Recommended)
 
+Add this to your `mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "fetch-content": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "ghcr.io/artyom-k-dev/fetch-content-mcp:latest"
+      ]
+    }
+  }
+}
+```
+
+Or run manually:
+
 ```bash
 docker run -i --rm ghcr.io/artyom-k-dev/fetch-content-mcp:latest
 ```
